@@ -89,8 +89,10 @@ node *buildTree(node *root)
 //     }
 // }
 
+
 // Approach - 3: using Morris Traversal
 // time complexity: O(n) ans space complexity: O(1)
+
 void inorderTraversal(node *root)
 {
     node *curr = root;

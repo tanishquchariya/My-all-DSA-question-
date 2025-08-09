@@ -20,7 +20,7 @@ class node{
         }
 };
 
-// // Approach - 1: brute force
+// // Approach - 1: brute force using level order traversal.
 // // time complexity: O(n) ans space complexity: O(h) where h is height of tree
 
 // int countNodesAtLevel(int i) {
