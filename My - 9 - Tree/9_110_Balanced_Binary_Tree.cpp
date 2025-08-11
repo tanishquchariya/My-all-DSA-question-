@@ -114,7 +114,7 @@ int checkHeight(node *root)
     if(rightHeight == -1) return -1; // Right subtree is not balanced
     if (abs(leftHeight - rightHeight) > 1)
     {
-        return -1;
+        return -1; // Current node is not balanced
     }
     return 1 + max(leftHeight, rightHeight);
 }
