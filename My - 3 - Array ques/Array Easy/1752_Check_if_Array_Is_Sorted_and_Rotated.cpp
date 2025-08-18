@@ -1,7 +1,8 @@
+// check if the array is sorted and rotated
 #include <bits/stdc++.h>
 using namespace std;
 
-// apaproach - 1 optimal solution
+// approach - 1 optimal solution
 // time complexity - O(n) and space complexity - O(1)
 bool checkSortedAndRotated(vector<int> &arr)
 {
