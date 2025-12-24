@@ -2,6 +2,8 @@
 using namespace std;
 
 // Approach - 1 using brute force
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
 // int maxProfit(vector<int> &prices)
 // {
 //     int maxProfit = 0;
@@ -18,7 +20,9 @@ using namespace std;
 //     return maxProfit;
 // }
 
-// Approach - 2 using auxiliary array
+// Approach - 2 using auxiliary 
+// Time Complexity: O(n)
+// Space Complexity: O(n)
 // int maxProfit(vector<int> &prices)
 // {
 //     int n = prices.size();
@@ -63,6 +67,7 @@ using namespace std;
 //     return maxProfit;
 // }
 
+// or 
 int maxProfit(vector<int> &prices)
 {
     int minPrice = INT_MAX;

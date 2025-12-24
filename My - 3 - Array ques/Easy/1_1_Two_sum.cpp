@@ -41,8 +41,8 @@ using namespace std;
 pair<int, int> twoSum(vector<int> &nums, int target)
 {
     // Create a hash map to store the elements and their indices
-    unordered_map<int, int> mymap;
     // key, Value---->Val, idx
+    unordered_map<int, int> mymap;
 
     // Find the pair element by element
 

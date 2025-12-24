@@ -3,6 +3,8 @@ using namespace std;
 
 // Appoach - 1 using burte force copy element of nums2 to nums1 and sort the nums1
 // void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
+// Time Complexity : O((m+n)log(m+n))
+// Space Complexity : O(1)
 // {
 //     for (int i = 0; i < n; i++)
 //     {
