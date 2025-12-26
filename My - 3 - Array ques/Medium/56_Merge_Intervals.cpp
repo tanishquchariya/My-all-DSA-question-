@@ -7,26 +7,45 @@ using namespace std;
 // eg. intervals = [[1,3],[2,6],[8,10],[15,18]]
 // output = [[1,6],[8,10],[15,18]]
 
-// vector<vector<int>> mergeIntervals(vector<vector<int>>& intervals) {
-//     vector<vector<int>> result;
-//     int n = intervals.size();
-//     sort(intervals.begin(), intervals.end());
-//     for(int i = 0; i < n; i++){
-//         int start = intervals[i][0];
-//         int end = intervals[i][1];
-//         for(int j = i + 1; j < n; j++){
-//             if(intervals[j][0] <= end){
-//                 end = max(end, intervals[j][1]);
-//                 i++;
-//             }
-//             else{
-//                 break;
-//             }
-//         }
-//         result.push_back({start, end});
-//     }
-//     return result;
-// }
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<vector<int>> mergeIntervalsBrute(vector<vector<int>>& intervals) {
+    vector<vector<int>> result;
+    int n = intervals.size();
+
+    // Step 1: Sort intervals by start time
+    sort(intervals.begin(), intervals.end());
+
+    // Step 2: Outer loop
+    for (int i = 0; i < n; i++) {
+
+        int start = intervals[i][0];
+        int end   = intervals[i][1];
+
+        // Step 3: Inner loop
+        for (int j = i + 1; j < n; j++) {
+
+            // If next interval overlaps
+            if (intervals[j][0] <= end) {
+                end = max(end, intervals[j][1]);
+            }
+            else {
+                break; // no more overlap
+            }
+        }
+
+        result.push_back({start, end});
+
+        // Step 4: Skip merged intervals
+        while (i + 1 < n && intervals[i + 1][0] <= end) {
+            i++;
+        }
+    }
+
+    return result;
+}
+
 
 // Approach - 2 : Using Extra Array 
 // Time Complexity : O(n log n)  (due to sorting)
@@ -78,21 +97,37 @@ vector<vector<int>> mergeIntervals(vector<vector<int>>& intervals) {
 // Approach - 4 : In-place Merging (Optimal Solution)
 // Time Complexity : O(n log n)  (due to sorting)
 // Space Complexity : O(1)
+
 vector<vector<int>> mergeIntervals(vector<vector<int>>& intervals) {
-    if(intervals.size() == 0) return {};
+    vector<vector<int>> result;
+
+    int n = intervals.size();
+
+    // Line 1: sort intervals by starting time
     sort(intervals.begin(), intervals.end());
-    int index = 0; // index of last merged interval
-    for(int i = 1; i < intervals.size(); i++){
-        if(intervals[index][1] >= intervals[i][0]){
-            intervals[index][1] = max(intervals[index][1], intervals[i][1]);
+
+    // Line 2: loop through intervals
+    for (int i = 0; i < n; i++) {
+
+        // Line 3: take start and end of current interval
+        int start = intervals[i][0];
+        int end = intervals[i][1];
+
+        // Line 4: merge overlapping intervals
+        int j = i + 1;
+        while (j < n && intervals[j][0] <= end) {
+            end = max(end, intervals[j][1]);
+            j++;
         }
-        else{
-            index++;
-            intervals[index] = intervals[i];
-        }
+
+        // Line 5: store merged interval
+        result.push_back({start, end});
+
+        // Line 6: move i to last merged interval
+        i = j - 1;
     }
-    intervals.resize(index + 1);
-    return intervals;
+
+    return result;
 }
 
 
