@@ -24,52 +24,52 @@ struct Node {
     }
 
 
-Approach - 1: Using stack to reverse linked list
-// time complexity: O(N), space complexity: O(N)
-Node* reverseList(Node* head) {
-    if (head == NULL || head->next == NULL) {
-        return head; // If the list is empty or has only one node, return head
-    }
+// Approach - 1: Using stack to reverse linked list
+// // time complexity: O(N), space complexity: O(N)
+// Node* reverseList(Node* head) {
+//     if (head == NULL || head->next == NULL) {
+//         return head; // If the list is empty or has only one node, return head
+//     }
 
-    stack<int> st;
-    Node* temp = head;
+//     stack<int> st;
+//     Node* temp = head;
 
-    // Push all nodes onto the stack
-    while (temp != NULL) {
-        st.push(temp->data);
-        temp = temp->next;
-    }
+//     // Push all nodes onto the stack
+//     while (temp != NULL) {
+//         st.push(temp->data);
+//         temp = temp->next;
+//     }
 
-    // Pop nodes from the stack to reverse the linked list
-    // Node* newHead = st.top();
+//     // Pop nodes from the stack to reverse the linked list
+//     // Node* newHead = st.top();
 
-    temp = head;
-    while (temp)
-    {
-        temp->data = st.top();
-        st.pop();
-        temp = temp->next;
-    }
-    return head;
-}
+//     temp = head;
+//     while (temp)
+//     {
+//         temp->data = st.top();
+//         st.pop();
+//         temp = temp->next;
+//     }
+//     return head;
+// }
 
-// Approach - 2: usting reursion to reverse linked list
-// time complexity: O(N), space complexity: O(N) due to recursive stack
-Node* reverseListRecursive(Node* head) {
-    // Base case: if head is NULL or only one node, return head
-    if (head == NULL || head->next == NULL) {
-        return head;
-    }
+// // Approach - 2: usting reursion to reverse linked list
+// // time complexity: O(N), space complexity: O(N) due to recursive stack
+// Node* reverseListRecursive(Node* head) {
+//     // Base case: if head is NULL or only one node, return head
+//     if (head == NULL || head->next == NULL) {
+//         return head;
+//     }
 
-    // Recursively reverse the rest of the list
-    Node* newHead = reverseListRecursive(head->next);
+//     // Recursively reverse the rest of the list
+//     Node* newHead = reverseListRecursive(head->next);
 
-    // Make the next node point to the current head
-    head->next->next = head;
-    head->next = NULL; // Set the next of current head to NULL
+//     // Make the next node point to the current head
+//     head->next->next = head;
+//     head->next = NULL; // Set the next of current head to NULL
 
-    return newHead; // Return the new head of the reversed list
-}
+//     return newHead; // Return the new head of the reversed list
+// }
 
 
 // Approach - 3: Iterative method to reverse linked list (optimal approach)
