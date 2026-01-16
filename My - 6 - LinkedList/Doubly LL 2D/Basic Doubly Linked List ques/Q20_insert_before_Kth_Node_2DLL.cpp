@@ -93,6 +93,95 @@ Node* insertKthNode(Node* head, int val, int k){
     return head;
 }
 
+// or solution of geeksforgeeks in which insert after k + 1 th node
+
+/* Structure of Node
+class Node {
+  public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int x) {
+        data = x;
+        next = prev = nullptr;
+    }
+};
+*/
+
+// class Solution {
+//   public:
+
+//     // Insert at head
+//     Node* inserthead(Node* head, int x){
+//         Node* newNode = new Node(x);
+
+//         if(head == NULL){
+//             return newNode;
+//         }
+
+//         newNode->next = head;
+//         head->prev = newNode;
+
+//         return newNode;
+//     }
+
+//     // Insert at tail
+//     Node* inserttail(Node* head, int x){
+//         Node* newNode = new Node(x);
+
+//         if(head == NULL){
+//             return newNode;
+//         }
+
+//         Node* temp = head;
+//         while(temp->next != NULL){
+//             temp = temp->next;
+//         }
+
+//         temp->next = newNode;
+//         newNode->prev = temp;
+//         return head;
+//     }
+
+//     // Insert at position p (0-based indexing)
+//     Node* insertAtPos(Node* head, int p, int x) {
+//         if(head == NULL){
+//             return new Node(x);
+//         }
+
+
+//         Node* temp = head;
+//         int count = 0;
+
+//         while(temp != NULL && count < p){
+//             temp = temp->next;
+//             count++;
+//         }
+
+//         // Insert at tail if position is beyond length
+//       // if p is beyond list length → insert at tail
+//         if(temp == NULL){
+//             return inserttail(head, x);
+//         }
+
+//         Node* newNode = new Node(x);
+//         Node* front = temp->next;
+
+//         newNode->next = front;
+//         newNode->prev = temp;
+//         temp->next = newNode;
+
+//         if(front != NULL){
+//             front->prev = newNode;
+//         }
+
+//         return head;
+//     }
+// };
+
+
+
 // Print function
 void print(Node *head)
 {

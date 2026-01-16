@@ -49,6 +49,7 @@ Node* deleteHead2dLL(Node* head){
     head = head->next;
     head->back = NULL;
     prev->next = NULL;
+    prev->back = NULL;
     delete prev;
     return head;
 }
