@@ -8,7 +8,7 @@ using namespace std;
 
 // Approach - 1: Using map to store adjacency list representation of the graph
 // time complexity: O(V + E) where V is number of vertices and E is number
-// space complexity: O(V + E) for storing the adjacency list
+// space complexity: O(V) for storing the adjacency list
 // for undirected graph
 class Graph
 {
@@ -53,7 +53,7 @@ public:
         // Mark the current vertex as visited
         visited[u] = true;
         cout << u << " ";
-        // Recur for all the vertices adjacent to this vertex
+        // Recurse for all the vertices adjacent to this vertex
         for (int v : adjList[u])
         {
 
@@ -62,6 +62,12 @@ public:
                 DFS(v, visited);
             }
         }
+        // we can also  write the above for loop as below
+        // for(auto v = adjList[u].begin(); v != adjList[u].end(); v++){
+        //     if(!visited[*v]){
+        //         DFS(*v, visited);
+        //     }
+        // }
     }
 };
 int main()
