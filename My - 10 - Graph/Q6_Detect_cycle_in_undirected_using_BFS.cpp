@@ -1,9 +1,8 @@
-// Detect cycle in undirected using DFS
-// Time Complexity: O(V + E)
-// Auxiliary Space: O(V)
+// cycle detection in undirected graph using BFS
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <queue>
 using namespace std;
 
 // Approach - 1: Using map to store adjacency list representation of the graph
@@ -43,23 +42,25 @@ public:
     }
 
     // DFS to detect cycle in an undirected graph
-    bool isCyclicDFS(vector<vector<int>> &adj, int u, vector<bool> &visited, int parent)
-    {
+    bool isCycleBFS(vector<vector<int>>& adj, int u,vector<bool>& visited) {
+        queue<pair<int,int>> que;
+        que.push({u,-1});
+        
         visited[u] = true;
-        for (int v : adj[u])
-        {
-            // if not visited
-            if (v == parent)
-            {
-                continue;
-            }
-            if (visited[v])
-            {
-                return true;
-            }
-            if (isCyclicDFS(adj, v, visited, u))
-            {
-                return true;
+        while(!que.empty()){
+            pair<int,int> p = que.front();
+            que.pop();
+            
+            int source = p.first;
+            int parent = p.second;
+            
+            for(int v : adj[source]){
+                if(visited[v] == false){
+                    visited[v] = true;
+                    que.push({v,source});
+                }else if(v != parent){
+                    return true;
+                }
             }
         }
         return false;
@@ -83,7 +84,7 @@ public:
         {
             if (!visited[i])
             {
-                if (isCyclicDFS(adj, i, visited, -1))
+                if (isCycleBFS(adj, i, visited))
                 {
                     return true;
                 }
