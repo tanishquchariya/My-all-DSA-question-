@@ -6,6 +6,8 @@
 using namespace std;
 
 // Approach - 1: Using map to store adjacency list representation of the graph
+// time complexity: O(V + E) where V is number of vertices and E is number
+// space complexity: O(V + E) for storing the adjacency list
 class Graph
 {
     unordered_map<int, vector<int>> adjList; // Adjacency list to store the graph
